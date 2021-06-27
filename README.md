@@ -1,5 +1,5 @@
 # Autonomous_RC_Car
-Made a diy Autonomous RC Car using ROS, Raspberry Pi-4,Arduino and L298n Motor driver.
+Made a diy Autonomous RC Car using ROS, Raspberry Pi-4,Arduino and L298n Motor driver, RP-LIDAR for Laser Scan Data
 ## Prerequisites
 1. Raspbian OS on Raspberry Pi4
 2. ROS Melodic Installed
