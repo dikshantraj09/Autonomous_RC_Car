@@ -5,8 +5,9 @@ Made a diy Autonomous RC Car using ROS, Raspberry Pi-4,Arduino and L298n Motor d
 2. ROS Melodic Installed
 3. Arduino IDE
 4. Python 2.7 and 3.7 installed
-5. RP-LIDAR SDK
-##STEPS FOR TELE-OPERATION
+5. RP-LIDAR SD
+
+###STEPS FOR TELE-OPERATION
 1. run `roscore`
 2. export current IP : `export ROS_IP= Current IP`
 3. export current Master : `export ROS_MASTER_URI= http://current_ip:11311`
