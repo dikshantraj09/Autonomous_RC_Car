@@ -1,0 +1,30 @@
+<launch>		
+
+  <arg name="rpi_car" />
+  <arg name="namespace" default="/rpi_car" />
+  <arg name="gui" default="False" />
+  <param name="robot_description" textfile="$(find rpi_car)/urdf/rpi.urdf" />
+  <param name="use_gui" value="$(arg gui)" />
+	
+  <node name="rob_st_pub" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="joi_st_pub" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find rpi_car)/rpi.rviz"/>
+  <group ns="$(arg namespace)">
+	  <rosparam file="$(find steer_bot_control)/config/ctrl_ackermann_steering_controller.yaml" command="load" ns="$(arg namespace)" />
+	  <rosparam file="$(find steer_bot_control)/config/ctrl_gains.yaml" command="load" ns="$(arg namespace)" />
+	  <rosparam file="$(find steer_bot_control)/config/ctrl_joint_state_publisher.yaml" command="load" ns="$(arg namespace)" />
+	  <rosparam file="$(find steer_bot_control)/config/ctrl_steer_bot_hardware_gazebo.yaml" command="load" ns="$(arg namespace)" />
+  	<node pkg="rqt_robot_steering" type="rqt_robot_steering" name="rqt_robot_steering" >
+            <param name="default_topic" value="$(arg namespace)/ackermann_steering_controller/cmd_vel"/>
+        </node>
+		<!-- Spawn the controllers -->
+	  <node pkg="controller_manager" type="spawner" name="controller_spawner" ns="$(arg namespace)"
+		    args="joint_state_publisher ackermann_steering_controller"
+		    output="screen" respawn="false" />
+  </group>
+</launch>
+
