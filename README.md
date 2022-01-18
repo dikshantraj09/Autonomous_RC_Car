@@ -16,7 +16,7 @@ Made a diy Autonomous RC Car using ROS, Raspberry Pi-4,Arduino and L298n Motor d
 4. run rosserial : `rosrun rosserial_python serial_node.py`
 5. run python file to publish Command Velocity : file in `/steer_bot/src/drive_servo.py`
 6. run joy_node : `rorun joy joy_node`
-![alt text](./10.jpeg "Title")
+![alt text](./10.jpg "Title")
 ![alt text](./13.jpeg "Title")
 ![alt text](./12.jpeg "Title")
 # Circuit Simulation
